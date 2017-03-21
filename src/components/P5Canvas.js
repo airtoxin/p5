@@ -28,6 +28,14 @@ class P5Canvas extends Component {
     tree.on('saveAsImage', this.saveAsImage);
   }
 
+  componentWillReceiveProps({ name, setup, draw }) {
+    this.name = name;
+    this.setup = setup;
+    this.draw = draw;
+
+    this.rerender();
+  }
+
   componentWillUnmount() {
     tree.off('redraw', this.rerender);
     tree.off('saveAsImage', this.saveAsImage);
