@@ -22,7 +22,7 @@ class App extends Component {
           onRequestChange={(isOpening) => this.props.dispatch(actions.openCloseSidebar, isOpening)}
         >
           <MenuItem onTouchTap={() => this.props.history.push('/')}>/</MenuItem>
-          <MenuItem onTouchTap={() => this.props.history.push('/hoge')}>hoge</MenuItem>
+          <MenuItem onTouchTap={() => this.props.history.push('/dripthespidersweb')}>Drip the spider's web</MenuItem>
         </Drawer>
 
         <PageSwitcher />
