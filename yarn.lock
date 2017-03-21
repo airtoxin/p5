@@ -924,6 +924,16 @@ balanced-match@^0.4.1, balanced-match@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
 
+baobab-react@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/baobab-react/-/baobab-react-2.1.2.tgz#76bd9d48e4befb52ac4fc951be8cce793c5b9ed2"
+
+baobab@2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/baobab/-/baobab-2.4.3.tgz#9655d6f1a69ce66a82fc6391773ca6a9f7a25a9d"
+  dependencies:
+    emmett "^3.1.1"
+
 base64-js@^1.0.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
@@ -1820,6 +1830,10 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emmett@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/emmett/-/emmett-3.1.1.tgz#7173858aabdfece0f40232696d4b13fef232cf04"
+
 emoji-regex@^6.1.0:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.4.1.tgz#77486fe9cd45421d260a6238b88d721e2fad2050"
@@ -2308,7 +2322,7 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.1, fbjs@^0.8.4:
+fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.6:
   version "0.8.9"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.9.tgz#180247fbd347dcc9004517b904f865400a0c8f14"
   dependencies:
@@ -4419,6 +4433,12 @@ react-event-listener@^0.4.0:
     babel-runtime "^6.20.0"
     react-addons-shallow-compare "^15.4.2"
     warning "^3.0.0"
+
+react-tap-event-plugin@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-tap-event-plugin/-/react-tap-event-plugin-2.0.1.tgz#316beb3bc6556e29ec869a7293e89c826a9074d2"
+  dependencies:
+    fbjs "^0.8.6"
 
 react@15.4.2:
   version "15.4.2"
