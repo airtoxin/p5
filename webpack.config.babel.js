@@ -18,6 +18,7 @@ export default {
   plugins: [
     new Copy([
       { from: 'src/index.html' },
+      { from: 'src/normalize.css' },
     ]),
     new webpack.HotModuleReplacementPlugin(),
   ],
