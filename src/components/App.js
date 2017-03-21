@@ -4,8 +4,8 @@ import { withRouter } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import PageSwitcher from './PageSwitcher';
-import * as actions from './actions';
+import * as actions from '~~/actions';
+import PageSwitcher from '@/PageSwitcher';
 
 class App extends Component {
   render() {
