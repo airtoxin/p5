@@ -25,5 +25,6 @@ export default {
   devtool: 'cheap-module-source-map',
   devServer: {
     port: 9000,
+    historyApiFallback: true,
   },
 };
