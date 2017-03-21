@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { branch } from 'baobab-react/higher-order';
+import { withRouter } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import PageSwitcher from './PageSwitcher';
+import * as actions from './actions';
 
 class App extends Component {
   render() {
@@ -11,17 +13,16 @@ class App extends Component {
       <div>
         <AppBar
           title="p5"
-          onLeftIconButtonTouchTap={() => this.props.dispatch(tree => tree.set(['isSidebarOpened'], true))}
+          onLeftIconButtonTouchTap={() => this.props.dispatch(actions.openCloseSidebar, true)}
         />
 
         <Drawer
           docked={false}
-          open={this.props.isSidebarOpened}
-          onRequestChange={(open) => this.props.dispatch(tree => tree.set(['isSidebarOpened'], open))}
+          open={this.props.isSidebarOpening}
+          onRequestChange={(isOpening) => this.props.dispatch(actions.openCloseSidebar, isOpening)}
         >
-          <MenuItem onTouchTap={() => location.href = "/hoge"}>
-            hoge
-          </MenuItem>
+          <MenuItem onTouchTap={() => this.props.history.push('/')}>/</MenuItem>
+          <MenuItem onTouchTap={() => this.props.history.push('/hoge')}>hoge</MenuItem>
         </Drawer>
 
         <PageSwitcher />
@@ -31,5 +32,5 @@ class App extends Component {
 }
 
 export default branch({
-  isSidebarOpened: ['isSidebarOpened'],
-}, App);
+  isSidebarOpening: ['isSidebarOpening'],
+}, withRouter(App));
