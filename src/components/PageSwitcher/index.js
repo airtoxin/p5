@@ -6,8 +6,8 @@ import StationMap from '@/pages/StationMap';
 
 export default () => (
   <div>
-    <Route path="/" exact component={Root}/>
-    <Route path="/spiderswebdrips" component={SpidersWebDrips}/>
-    <Route path="/stationmap" component={StationMap}/>
+    <Route path="/" exact component={Root} />
+    <Route path="/spiderswebdrips" component={SpidersWebDrips} />
+    <Route path="/stationmap" component={StationMap} />
   </div>
 );

@@ -10,6 +10,11 @@
   ],
   "rules": {
     "generator-star-spacing": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "react/jsx-filename-extension": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "react/forbid-prop-types": "off",
+    "no-mixed-operators": "off"
   }
 }

@@ -19,8 +19,7 @@ export default class Branch {
 
   draw() {
     this.p.ellipse(this.x, this.y, this.r);
-    this.branches.forEach(b => {
-
+    this.branches.forEach((b) => {
       this.p.line(this.x, this.y, b.x, b.y);
       b.draw();
     });
