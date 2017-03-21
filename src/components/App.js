@@ -5,7 +5,9 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import * as actions from '~~/actions';
+import Controls from '@/Controls';
 import PageSwitcher from '@/PageSwitcher';
+import styles from './styles';
 
 class App extends Component {
   render() {
@@ -22,10 +24,14 @@ class App extends Component {
           onRequestChange={(isOpening) => this.props.dispatch(actions.openCloseSidebar, isOpening)}
         >
           <MenuItem onTouchTap={() => this.props.history.push('/')}>/</MenuItem>
-          <MenuItem onTouchTap={() => this.props.history.push('/dripthespidersweb')}>Drip the spider's web</MenuItem>
+          <MenuItem onTouchTap={() => this.props.history.push('/spiderswebdrips')}>Spider's web drips</MenuItem>
+          <MenuItem onTouchTap={() => this.props.history.push('/stationmap')}>Station map</MenuItem>
         </Drawer>
 
-        <PageSwitcher />
+        <div className={styles.container}>
+          <div className={styles.row}><Controls /></div>
+          <div className={styles.row}><PageSwitcher /></div>
+        </div>
       </div>
     );
   }

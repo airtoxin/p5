@@ -1,0 +1,13 @@
+.container {
+  margin-top: 1em;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
