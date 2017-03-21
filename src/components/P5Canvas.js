@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import { branch } from 'baobab-react/higher-order';
 import P5 from 'p5';
 import tree from '~~/tree';
 import * as actions from '~~/actions';
 
-export default class P5Canvas extends Component {
+class P5Canvas extends Component {
   constructor({ name, setup, draw }) {
     super();
 
@@ -11,6 +12,9 @@ export default class P5Canvas extends Component {
     this.name = name;
     this.setup = setup;
     this.draw = draw;
+
+    this.rerender = this.rerender.bind(this);
+    this.saveAsImage = this.saveAsImage.bind(this);
   }
 
   componentDidMount() {
@@ -20,9 +24,8 @@ export default class P5Canvas extends Component {
       p.draw = () => this.draw(p);
       /* eslint-enable no-param-reassign */
     }, this.ref);
-
-    tree.on('redraw', this.rerender.bind(this));
-    tree.on('saveAsImage', this.saveAsImage.bind(this));
+    tree.on('redraw', this.rerender);
+    tree.on('saveAsImage', this.saveAsImage);
   }
 
   componentWillUnmount() {
@@ -51,3 +54,5 @@ export default class P5Canvas extends Component {
 P5Canvas.propTypes = {
   dispatch: PropTypes.any.isRequired,
 };
+
+export default branch({}, P5Canvas);
