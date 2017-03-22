@@ -54,7 +54,7 @@ export default class Branches extends Component {
         <P5Canvas
           name={this.state.name}
           setup={setup}
-          draw={draw(this.state.n, strategies[`${this.state.name}Strategy`])}
+          draw={draw(this.state.n, strategies[this.state.name])}
         />
         <Slider
           min={0}
