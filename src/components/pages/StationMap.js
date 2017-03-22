@@ -1,6 +1,6 @@
 import React from 'react';
 import P5Canvas from '@/P5Canvas';
-import Branch from './Branch';
+import Branch, { stationMapStrategy } from '@/Branch';
 
 const setup = (p) => {
   p.noLoop();
@@ -11,7 +11,7 @@ const draw = (p) => {
   p.background(0);
   p.fill(255);
   p.stroke(255);
-  new Branch(p, 350, 350, 10, 6).draw();
+  new Branch(p, 350, 350, 10, 6, stationMapStrategy).draw();
 };
 
 export default () => (

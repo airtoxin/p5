@@ -12,7 +12,7 @@ import styles from './styles';
 const App = ({ dispatch, history, isSidebarOpening }) => (
   <div>
     <AppBar
-      title="p5"
+      title="p5.js playground"
       onLeftIconButtonTouchTap={() => dispatch(actions.openCloseSidebar, true)}
     />
 

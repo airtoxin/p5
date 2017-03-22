@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Slider from 'material-ui/Slider';
 import P5Canvas from '@/P5Canvas';
-import Branch from './Branch';
+import Branch, { spidersWebDripsStrategy } from '@/Branch';
 
 const setup = p => {
   p.noLoop();
@@ -12,7 +12,7 @@ const draw = n => p => {
   p.background(0);
   p.fill(255);
   p.stroke(255);
-  new Branch(p, 350, 350, 30, n).draw();
+  new Branch(p, 350, 350, 30, n, spidersWebDripsStrategy).draw();
 };
 
 export default class SpidersWebDrips extends Component {
