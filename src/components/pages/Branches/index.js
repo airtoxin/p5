@@ -15,7 +15,8 @@ const draw = (n, branchingStrategy) => p => {
   p.background(0);
   p.fill(255);
   p.stroke(255);
-  new Branch(p, 350, 350, 30, n, branchingStrategy).draw();
+  const r = branchingStrategy.name === 'urbanProgram' ? 0 : 30;
+  new Branch(p, 350, 350, r, n, branchingStrategy).draw();
 };
 
 export default class Branches extends Component {
@@ -50,6 +51,7 @@ export default class Branches extends Component {
         <SelectField value={this.state.name} onChange={this.handleChangeName}>
           <MenuItem value="spidersWebDrips" primaryText="Spider's web drips" />
           <MenuItem value="stationMap" primaryText="Station map" />
+          <MenuItem value="urbanProgram" primaryText="Urban Program" />
         </SelectField>
         <P5Canvas
           name={this.state.name}

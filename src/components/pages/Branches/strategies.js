@@ -22,3 +22,15 @@ export const stationMap = (p, x, y, r, n) => {
     return new Branch(p, x + bx, y + by, br, Math.floor(Math.random() * n), stationMap);
   });
 }
+
+export const urbanProgram = (p, x, y, r, n) => {
+  return Array.from(Array(n)).map(() => {
+    const distance = 40;
+    const br = 0;
+    const theta = Math.PI / 3 * Math.floor(Math.random() * 6);
+
+    const [bx, by] = [Math.cos(theta), Math.sin(theta)].map(a => a * distance);
+    const bn = Math.random() < 0.5 ? 2 : 0;
+    return new Branch(p, x + bx, y + by, br, bn, urbanProgram);
+  });
+}
