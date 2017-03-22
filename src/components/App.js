@@ -22,8 +22,7 @@ const App = ({ dispatch, history, isSidebarOpening }) => (
       onRequestChange={isOpening => dispatch(actions.openCloseSidebar, isOpening)}
     >
       <MenuItem onTouchTap={() => history.push('/')}>/</MenuItem>
-      <MenuItem onTouchTap={() => history.push('/spiderswebdrips')}>Spider&apos;s web drips</MenuItem>
-      <MenuItem onTouchTap={() => history.push('/stationmap')}>Station map</MenuItem>
+      <MenuItem onTouchTap={() => history.push('/branches')}>Branches</MenuItem>
     </Drawer>
 
     <div className={styles.container}>
