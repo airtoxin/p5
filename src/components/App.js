@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import { branch } from 'baobab-react/higher-order';
-import { withRouter } from 'react-router';
+import { withRouter, Route } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import * as actions from '~~/actions';
 import Controls from '@/Controls';
-import PageSwitcher from '@/PageSwitcher';
+import Root from '@/pages/Root';
+import Branches from '@/pages/Branches';
 import styles from './styles';
 
 const App = ({ dispatch, history, isSidebarOpening }) => (
@@ -27,7 +28,10 @@ const App = ({ dispatch, history, isSidebarOpening }) => (
 
     <div className={styles.container}>
       <div className={styles.row}><Controls /></div>
-      <div className={styles.row}><PageSwitcher /></div>
+      <div className={styles.row}>
+        <Route path="/" exact component={Root} />
+        <Route path="/branches" component={Branches} />
+      </div>
     </div>
   </div>
 );
