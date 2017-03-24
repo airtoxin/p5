@@ -5,10 +5,8 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import * as actions from '~~/actions';
+import routes from '~~/routes';
 import Controls from '@/Controls';
-import Root from '@/pages/Root';
-import Branches from '@/pages/Branches';
-import TrigonometricFunctions from '@/pages/TrigonometricFunctions';
 import styles from './styles';
 
 const App = ({ dispatch, history, isSidebarOpening }) => (
@@ -23,17 +21,17 @@ const App = ({ dispatch, history, isSidebarOpening }) => (
       open={isSidebarOpening}
       onRequestChange={isOpening => dispatch(actions.openCloseSidebar, isOpening)}
     >
-      <MenuItem onTouchTap={() => history.push('/')}>/</MenuItem>
-      <MenuItem onTouchTap={() => history.push('/branches')}>Branches</MenuItem>
-      <MenuItem onTouchTap={() => history.push('/trigonometricfunctions')}>TrigonometricFunctions</MenuItem>
+      {routes.map(({ path, name }) => (
+        <MenuItem onTouchTap={() => history.push(path)}>{name}</MenuItem>
+      ))}
     </Drawer>
 
     <div className={styles.container}>
       <div className={styles.row}><Controls /></div>
       <div className={styles.row}>
-        <Route path="/" exact component={Root} />
-        <Route path="/branches" component={Branches} />
-        <Route path="/trigonometricfunctions" component={TrigonometricFunctions} />
+        {routes.map(({ path, component }) => (
+          <Route path={path} exact component={component} />
+        ))}
       </div>
     </div>
   </div>
