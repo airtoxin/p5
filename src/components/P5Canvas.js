@@ -5,13 +5,14 @@ import tree from '~~/tree';
 import * as actions from '~~/actions';
 
 class P5Canvas extends Component {
-  constructor({ name, setup, draw }) {
+  constructor({ name, setup, draw, redraw }) {
     super();
 
     this.ref = null;
     this.name = name;
     this.setup = setup;
     this.draw = draw;
+    this.redraw = redraw;
 
     this.rerender = this.rerender.bind(this);
     this.saveAsImage = this.saveAsImage.bind(this);
@@ -42,6 +43,7 @@ class P5Canvas extends Component {
   }
 
   rerender() {
+    if (this.redraw) this.redraw(this.p);
     this.draw(this.p);
   }
 

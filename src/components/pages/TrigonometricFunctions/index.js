@@ -5,13 +5,13 @@ import Slider from 'material-ui/Slider';
 import P5Canvas from '@/P5Canvas';
 import * as strategies from './strategies';
 
-const setup = p => {
+const setup = (p) => {
   p.createCanvas(700, 700);
   p.fill(255);
   p.stroke(255);
 };
 
-const draw = (n, drawingStrategy) => p => {
+const draw = (n, drawingStrategy) => (p) => {
   const alpha = drawingStrategy.name === 'heartBeat' ? 255 : 10;
   p.background(0, alpha);
 
@@ -40,7 +40,7 @@ export default class TrigonometricFunctions extends Component {
   handleChangeN(event, n) {
     this.setState({
       ...this.state,
-      n
+      n,
     });
   }
 

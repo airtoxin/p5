@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Slider from 'material-ui/Slider';
@@ -6,12 +6,12 @@ import P5Canvas from '@/P5Canvas';
 import Branch from './Branch';
 import * as strategies from './strategies';
 
-const setup = p => {
+const setup = (p) => {
   p.noLoop();
   p.createCanvas(700, 700);
 };
 
-const draw = (n, branchingStrategy) => p => {
+const draw = (n, branchingStrategy) => (p) => {
   p.background(0);
   p.fill(255);
   p.stroke(255);
@@ -24,7 +24,7 @@ export default class Branches extends Component {
     super();
     this.state = {
       n: 6,
-      name: 'spidersWebDrips'
+      name: 'spidersWebDrips',
     };
 
     this.handleChangeName = this.handleChangeName.bind(this);
@@ -41,7 +41,7 @@ export default class Branches extends Component {
   handleChangeN(event, n) {
     this.setState({
       ...this.state,
-      n
+      n,
     });
   }
 

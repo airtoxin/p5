@@ -6,7 +6,6 @@ export default class Branch {
     this.r = r;
     this.n = n;
 
-    const baseTheta = Math.PI / 3 * Math.floor(Math.random() * 3);
     this.branches = branchingStrategy(p, x, y, r, n);
   }
 

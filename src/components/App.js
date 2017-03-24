@@ -8,7 +8,6 @@ import * as actions from '~~/actions';
 import Controls from '@/Controls';
 import Root from '@/pages/Root';
 import Branches from '@/pages/Branches';
-import RandomWalk from '@/pages/RandomWalk';
 import TrigonometricFunctions from '@/pages/TrigonometricFunctions';
 import styles from './styles';
 
@@ -26,7 +25,6 @@ const App = ({ dispatch, history, isSidebarOpening }) => (
     >
       <MenuItem onTouchTap={() => history.push('/')}>/</MenuItem>
       <MenuItem onTouchTap={() => history.push('/branches')}>Branches</MenuItem>
-      <MenuItem onTouchTap={() => history.push('/randomwalk')}>RandomWalk</MenuItem>
       <MenuItem onTouchTap={() => history.push('/trigonometricfunctions')}>TrigonometricFunctions</MenuItem>
     </Drawer>
 
@@ -35,7 +33,6 @@ const App = ({ dispatch, history, isSidebarOpening }) => (
       <div className={styles.row}>
         <Route path="/" exact component={Root} />
         <Route path="/branches" component={Branches} />
-        <Route path="/randomwalk" component={RandomWalk} />
         <Route path="/trigonometricfunctions" component={TrigonometricFunctions} />
       </div>
     </div>
