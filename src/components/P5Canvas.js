@@ -43,7 +43,7 @@ class P5Canvas extends Component {
   }
 
   rerender() {
-    if (this.redraw) this.redraw(this.p);
+    this.setup(this.p);
     this.draw(this.p);
   }
 
