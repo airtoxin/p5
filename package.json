@@ -7,6 +7,8 @@
     "build": "run-s build:clean build:dist",
     "build:clean": "rimraf dist",
     "build:dist": "NODE_ENV=production webpack -p",
+    "preview": "run-s build preview:serve",
+    "preview:serve": "serve --port 9999 dist",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server",
     "test:lint": "eslint {src,test,webpack.config.babel.js} --fix",
