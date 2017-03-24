@@ -48,7 +48,7 @@ conf.plugins = [
   new webpack.optimize.CommonsChunkPlugin('vendor'),
   new Copy([
     { from: 'src/index.html' },
-    { from: 'src/normalize.css' },
+    { from: 'node_modules/normalize.css/normalize.css' },
   ]),
   new ExtractTextPlugin('styles.css'),
 
