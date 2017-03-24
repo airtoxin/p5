@@ -22,7 +22,7 @@ const App = ({ dispatch, history, isSidebarOpening }) => (
       onRequestChange={isOpening => dispatch(actions.openCloseSidebar, isOpening)}
     >
       {routes.map(({ path, name }) => (
-        <MenuItem onTouchTap={() => history.push(path)}>{name}</MenuItem>
+        <MenuItem key={path} onTouchTap={() => history.push(path)}>{name}</MenuItem>
       ))}
     </Drawer>
 
@@ -30,7 +30,7 @@ const App = ({ dispatch, history, isSidebarOpening }) => (
       <div className={styles.row}><Controls /></div>
       <div className={styles.row}>
         {routes.map(({ path, component }) => (
-          <Route path={path} exact component={component} />
+          <Route key={path} path={path} exact component={component} />
         ))}
       </div>
     </div>

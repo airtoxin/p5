@@ -1,13 +1,17 @@
 import path from 'path';
 import webpack from 'webpack';
 import Copy from 'copy-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-export default {
-  entry: './src/index.js',
+const conf = {
+  entry: {
+    app: './src/index.js',
+    vendor: ['react', 'react-dom'],
+  },
   output: {
     publicPath: '/',
     path: path.join(__dirname, 'dist'),
-    filename: 'app.js',
+    filename: '[name].js',
   },
   resolve: {
     extensions: ['.js', '.css'],
@@ -20,24 +24,47 @@ export default {
   module: {
     rules: [
       { test: /\.js$/, include: [path.resolve(__dirname, 'src')], loader: 'babel-loader' },
-      { test: /\.css$/,
+      {
+        test: /\.css$/,
         include: [path.resolve(__dirname, 'src')],
-        use: [
-          'style-loader',
-        { loader: 'css-loader', options: { modules: true } },
-        ] },
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: { loader: 'css-loader', options: { modules: true } },
+        }),
+      },
     ],
   },
-  plugins: [
-    new Copy([
-      { from: 'src/index.html' },
-      { from: 'src/normalize.css' },
-    ]),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
   devtool: 'cheap-module-source-map',
   devServer: {
     port: 9000,
     historyApiFallback: true,
   },
 };
+
+// Setup webpack plugins
+conf.plugins = [
+
+  // always enables plugins
+  new webpack.optimize.CommonsChunkPlugin('vendor'),
+  new Copy([
+    { from: 'src/index.html' },
+    { from: 'src/normalize.css' },
+  ]),
+  new ExtractTextPlugin('styles.css'),
+
+].concat(process.NODE_ENV !== 'production' ? [
+
+  // development plugins
+  new webpack.HotModuleReplacementPlugin(),
+
+] : [
+
+  // production plugins
+  new webpack.optimize.UglifyJsPlugin(),
+  new webpack.EnvironmentPlugin({
+    NODE_ENV: process.env.NODE_ENV,
+  }),
+
+]);
+
+export default conf;
