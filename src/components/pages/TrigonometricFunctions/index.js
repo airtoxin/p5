@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import Slider from 'material-ui/Slider';
-import P5Canvas from '@/P5Canvas';
+import PageTemplate from '@/pages/PageTemplate';
 import * as strategies from './strategies';
 
 const setup = (p) => {
@@ -11,62 +8,26 @@ const setup = (p) => {
   p.stroke(255);
 };
 
-const draw = (n, strategyName) => (p) => {
-  const alpha = strategyName === 'heartBeat' ? 255 : 10;
-  const drawingStrategy = strategies[strategyName];
+const draw = (name, strategy) => (n) => (p) => {
+  const alpha = name === 'heartBeat' ? 255 : 10;
   p.background(0, alpha);
-
-  drawingStrategy(n, p);
+  strategy(n, p);
 };
 
-export default class TrigonometricFunctions extends Component {
-  constructor() {
-    super();
-    this.state = {
-      n: 12,
-      name: 'heartBeat',
-    };
+const settings = Object.entries(strategies).reduce((obj, [name, strategy]) => {
+  return {
+    ...obj,
+    [name]: {
+      setup,
+      draw: draw(name, strategy),
+      minN: 0,
+      maxN: 36,
+    },
+  };
+}, {});
 
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeN = this.handleChangeN.bind(this);
-  }
-
-  handleChangeName(event, index, name) {
-    this.setState({
-      ...this.state,
-      name,
-    });
-  }
-
-  handleChangeN(event, n) {
-    this.setState({
-      ...this.state,
-      n,
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <SelectField value={this.state.name} onChange={this.handleChangeName}>
-          <MenuItem value="heartBeat" primaryText="Heart Beat" />
-          <MenuItem value="singleSpin" primaryText="Single Spin" />
-          <MenuItem value="doubleSpin" primaryText="Double Spin" />
-          <MenuItem value="fakeRoller" primaryText="Fake Roller" />
-        </SelectField>
-        <P5Canvas
-          name={this.state.name}
-          setup={setup}
-          draw={draw(this.state.n, this.state.name)}
-        />
-        <Slider
-          min={0}
-          max={36}
-          step={1}
-          value={this.state.n}
-          onChange={this.handleChangeN}
-        />
-      </div>
-    );
-  }
-}
+export default () => (
+  <PageTemplate
+    settings={settings}
+  />
+);
