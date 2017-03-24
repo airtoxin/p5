@@ -11,11 +11,12 @@ const setup = (p) => {
   p.createCanvas(700, 700);
 };
 
-const draw = (n, branchingStrategy) => (p) => {
+const draw = (n, strategyName) => (p) => {
   p.background(0);
   p.fill(255);
   p.stroke(255);
-  const r = branchingStrategy.name === 'urbanProgram' ? 0 : 30;
+  const r = strategyName === 'urbanProgram' ? 0 : 30;
+  const branchingStrategy = strategies[strategyName];
   new Branch(p, 350, 350, r, n, branchingStrategy).draw();
 };
 
@@ -56,7 +57,7 @@ export default class Branches extends Component {
         <P5Canvas
           name={this.state.name}
           setup={setup}
-          draw={draw(this.state.n, strategies[this.state.name])}
+          draw={draw(this.state.n, this.state.name)}
         />
         <Slider
           min={0}

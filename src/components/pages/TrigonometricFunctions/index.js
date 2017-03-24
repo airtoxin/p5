@@ -11,8 +11,9 @@ const setup = (p) => {
   p.stroke(255);
 };
 
-const draw = (n, drawingStrategy) => (p) => {
-  const alpha = drawingStrategy.name === 'heartBeat' ? 255 : 10;
+const draw = (n, strategyName) => (p) => {
+  const alpha = strategyName === 'heartBeat' ? 255 : 10;
+  const drawingStrategy = strategies[strategyName];
   p.background(0, alpha);
 
   drawingStrategy(n, p);
@@ -56,7 +57,7 @@ export default class TrigonometricFunctions extends Component {
         <P5Canvas
           name={this.state.name}
           setup={setup}
-          draw={draw(this.state.n, strategies[this.state.name])}
+          draw={draw(this.state.n, this.state.name)}
         />
         <Slider
           min={0}
