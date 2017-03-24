@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import Copy from 'copy-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlPlugin from 'html-webpack-plugin';
 
 const conf = {
   entry: {
@@ -47,10 +48,12 @@ conf.plugins = [
   // always enables plugins
   new webpack.optimize.CommonsChunkPlugin('vendor'),
   new Copy([
-    { from: 'src/index.html' },
     { from: 'node_modules/normalize.css/normalize.css' },
   ]),
   new ExtractTextPlugin('styles.css'),
+  new HtmlPlugin({
+    template: 'src/template.html',
+  }),
 
 ].concat(process.NODE_ENV !== 'production' ? [
 
